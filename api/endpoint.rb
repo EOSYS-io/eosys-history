@@ -1,5 +1,7 @@
 module Api
-  class Endpoint < Grape::API
-    mount Api::V1::History::Endpoint => '/v1/history'
+  module V1
+    class Endpoint < Grape::API
+      mount History::Endpoint => '/v1/history'
+    end
   end
 end

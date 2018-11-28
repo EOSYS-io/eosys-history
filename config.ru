@@ -1,3 +1,3 @@
 require File.expand_path('../config/environment', __FILE__)
 
-run Api::Endpoint
+run Api::V1::Endpoint

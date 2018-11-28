@@ -6,7 +6,9 @@ module Api
         namespace 'get_actions' do
           post do
             coll = App::MongoPool.get_collection('action_traces')
-            coll.find().limit(1).first
+            JSON.parse(
+              coll.find().limit(10).to_a.to_json
+            )
           end
         end
       end
