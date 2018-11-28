@@ -7,7 +7,7 @@ module Api
           params do
             requires :public_key, 
               type: String, 
-              regexp: /^EOS[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}$/
+              regexp: /\AEOS[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}\z/
           end
           post do
             coll = App::MongoPool.get_collection('pub_keys')
