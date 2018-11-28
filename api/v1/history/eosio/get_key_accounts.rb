@@ -13,7 +13,7 @@ module Api
             coll = App::MongoPool.get_collection('pub_keys')
             JSON.parse(
               coll.find({ public_key: params[:public_key] })
-              .projection(_id: 0)
+              .projection(_id: 0, createdAt: 0)
               .to_a
               .to_json
             )
