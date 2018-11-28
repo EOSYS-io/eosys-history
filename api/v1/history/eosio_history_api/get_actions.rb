@@ -27,15 +27,16 @@ module Api
             }
             coll = App::MongoPool.get_collection('action_traces')
 
-            JSON.parse(
-              coll.find(query)
-              .sort(_id: params[:sort])
-              .skip(params[:skip])
-              .limit(params[:limit])
-              .projection({ _id: 0, createdAt: 0 })
-              .to_a
-              .to_json
-            )
+            { actions: JSON.parse(
+                coll.find(query)
+                .sort(_id: params[:sort])
+                .skip(params[:skip])
+                .limit(params[:limit])
+                .projection({ _id: 0, createdAt: 0 })
+                .to_a
+                .to_json
+              )
+            }
           end
         end
       end
