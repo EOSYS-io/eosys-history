@@ -5,7 +5,8 @@ module Api
         format :json
         namespace 'get_actions' do
           post do
-            { message: "Hello Get Actions!" }
+            coll = App::MongoPool.get_collection('action_traces')
+            coll.find().limit(1).first
           end
         end
       end
