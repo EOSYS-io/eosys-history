@@ -11,3 +11,5 @@ Bundler.require(:default, ENV['RACK_ENV'])
     require f
   end
 end
+
+Mongo::Logger.logger.level = Logger::WARN
