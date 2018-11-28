@@ -6,7 +6,7 @@ Bundler.require(:default, ENV['RACK_ENV'])
 
 # To avoid using pattern like **/*.rb,
 # include all directories containing rb files explicitly.
-['api/v1/history/eosio', 'api/v1/history', 'api', 'app'].each do |path|
+['api/v1/history/eosio_history_api', 'api/v1/history', 'api', 'app'].each do |path|
   Dir[File.expand_path("../../#{path}/*.rb", __FILE__)].each do |f|
     require f
   end
