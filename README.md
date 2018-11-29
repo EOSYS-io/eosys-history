@@ -15,7 +15,7 @@ ruby -e "require 'net/http'; require 'json'; puts JSON.parse(Net::HTTP.get(URI('
 ## Setup
 ```
 gem install bundler
-bundle install
+bundle install --binstubs
 ```
 
 ## Run
