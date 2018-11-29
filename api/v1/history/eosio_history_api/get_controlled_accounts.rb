@@ -7,8 +7,9 @@ module Api
           params do
             requires :controlling_account, type: String
           end
+
           post do
-            coll = App::MongoPool.get_collection('account_controls')
+            coll = Api::Helper::MongoHelpers.get_collection('account_controls')
             JSON.parse(
               coll.find({ controlling_account: params[:controlling_account] })
               .projection(_id: 0, createdAt: 0)

@@ -25,7 +25,7 @@ module Api
                 { 'act.data.voter': params[:account_name] }
               ]
             }
-            coll = App::MongoPool.get_collection('action_traces')
+            coll = Api::Helper::MongoHelpers.get_collection('action_traces')
 
             { actions: JSON.parse(
                 coll.find(query)

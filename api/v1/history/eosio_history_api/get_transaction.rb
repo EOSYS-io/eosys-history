@@ -7,8 +7,9 @@ module Api
           params do
             requires :id, type: String
           end
+
           post do
-            coll = App::MongoPool.get_collection('transaction_traces')
+            coll = Api::Helper::MongoHelpers.get_collection('transaction_traces')
             coll.find({ id: params[:id] })
             .projection(_id: 0, createdAt: 0)
             .first
