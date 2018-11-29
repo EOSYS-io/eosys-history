@@ -24,3 +24,8 @@ bundle install --binstubs
 puma
 ```
 
+## Test
+```
+rspec
+```
+
