@@ -14,7 +14,7 @@ module Api
             filter = { public_key: params[:public_key] }
             options = { projection: { _id: 0, createdAt: 0 } }
 
-            status = 200
+            status 200
             Api::Helper::MongoHelpers.find('pub_keys', filter, options)
           end
         end

@@ -9,11 +9,11 @@ module Api
           end
 
           post do
-            query = { id: params[:id] }
+            filter = { id: params[:id] }
             options = { projection: { _id: 0, createdAt: 0 } }
 
-            status = 200
-            Api::Helper::MongoHelpers.find_one('transaction_traces', query, options)
+            status 200
+            Api::Helper::MongoHelpers.find_one('transaction_traces', filter, options)
           end
         end
       end

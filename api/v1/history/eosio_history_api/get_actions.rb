@@ -33,7 +33,9 @@ module Api
               projection: { _id: 0, createdAt: 0 }
             }
 
-            status = 200
+            # Since Grape returns status 201 for HTTP Post request by default,
+            # change it to 200.
+            status 200
             { actions: Api::Helper::MongoHelpers.find('action_traces', filter, options) }
           end
         end
