@@ -9,7 +9,7 @@ module Api
               type: String, 
               regexp: /\A[a-z12345.]{1,12}\z/
             optional :skip, type: Integer, default: 0
-            optional :limit, type: Integer, default: 10, values: 1..500
+            optional :limit, type: Integer, default: 10, values: 1..100
             optional :sort, type: Integer, default: -1, values: [1, -1]
           end
 
