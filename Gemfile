@@ -11,4 +11,6 @@ gem "grape_logging", "~> 1.8"
 
 gem "rack-cors", "~> 1.0"
 
-gem "rspec", "~> 3.8", :group => [:development, :test]
+gem "rspec", "~> 3.8", :group => [:test]
+
+gem "rack-test", "~> 1.1", :group => [:test]
