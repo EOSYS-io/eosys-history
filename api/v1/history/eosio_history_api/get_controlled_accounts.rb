@@ -9,13 +9,11 @@ module Api
           end
 
           post do
-            coll = Api::Helper::MongoHelpers.get_collection('account_controls')
-            JSON.parse(
-              coll.find({ controlling_account: params[:controlling_account] })
-              .projection(_id: 0, createdAt: 0)
-              .to_a
-              .to_json
-            )
+            filter = { controlling_account: params[:controlling_account] }
+            options = { projection: { _id: 0, createdAt: 0 } }
+
+            status = 200
+            Api::Helper::MongoHelpers.find('account_controls', filter, options)
           end
         end
       end

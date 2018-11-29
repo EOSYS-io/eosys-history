@@ -11,13 +11,11 @@ module Api
           end
 
           post do
-            coll = Api::Helper::MongoHelpers.get_collection('pub_keys')
-            JSON.parse(
-              coll.find({ public_key: params[:public_key] })
-              .projection(_id: 0, createdAt: 0)
-              .to_a
-              .to_json
-            )
+            filter = { public_key: params[:public_key] }
+            options = { projection: { _id: 0, createdAt: 0 } }
+
+            status = 200
+            Api::Helper::MongoHelpers.find('pub_keys', filter, options)
           end
         end
       end

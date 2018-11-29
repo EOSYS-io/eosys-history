@@ -14,7 +14,7 @@ module Api
           end
 
           post do
-            query = {
+            filter = {
               '$or' => [
                 { 'act.account': params[:account_name] },
                 { 'act.authorization.actor': params[:account_name] },
@@ -25,18 +25,16 @@ module Api
                 { 'act.data.voter': params[:account_name] }
               ]
             }
-            coll = Api::Helper::MongoHelpers.get_collection('action_traces')
 
-            { actions: JSON.parse(
-                coll.find(query)
-                .sort(_id: params[:sort])
-                .skip(params[:skip])
-                .limit(params[:limit])
-                .projection({ _id: 0, createdAt: 0 })
-                .to_a
-                .to_json
-              )
+            options = {
+              sort: { _id: params[:sort] },
+              skip: params[:skip],
+              limit: params[:limit],
+              projection: { _id: 0, createdAt: 0 }
             }
+
+            status = 200
+            { actions: Api::Helper::MongoHelpers.find('action_traces', filter, options) }
           end
         end
       end

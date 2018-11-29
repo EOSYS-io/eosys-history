@@ -9,10 +9,11 @@ module Api
           end
 
           post do
-            coll = Api::Helper::MongoHelpers.get_collection('transaction_traces')
-            coll.find({ id: params[:id] })
-            .projection(_id: 0, createdAt: 0)
-            .first
+            query = { id: params[:id] }
+            options = { projection: { _id: 0, createdAt: 0 } }
+
+            status = 200
+            Api::Helper::MongoHelpers.find_one('transaction_traces', query, options)
           end
         end
       end
