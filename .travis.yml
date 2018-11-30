@@ -2,24 +2,21 @@ branches:
   only:
   - master
 sudo: required
-
 git:
   submodules: false
-
 jobs:
   include:
-    - stage: Test
-      language: ruby
-      cache:
-        bundler: true
-        directories:
-          - /home/travis/.rvm/
-      env:
-        - RACK_ENV=test
-      script:
-        - bundle exec rspec
-
+  - stage: Test
+    language: ruby
+    cache:
+      bundler: true
+      directories:
+      - "/home/travis/.rvm/"
+    env:
+    - RACK_ENV=test
+    script:
+    - bundle exec rspec
 notifications:
   email: false
   slack:
-    secure: NYIhR65QVav3UgtYE7S0hBtDpOj0V0/jZPdcab6OawphCIVAuGbDFN3whKIRDZD/Gtgcs9GBS5jKqg57GOu8uGwfv5QK3z1TrZTkJ285KMlfsreEFluDLeJBYogCwURUBsaMbZ7z4eb33qyMAH1/SCVw/R5ppxLpcSoOjlSRAwKZDyEeOHdXcRe9Jn0nOGTQEZYYT0wO3fDViu0D2mLd6ELjZONjqvkDx6w91/ZoXFg+Orpaq4IOdIHaseRS3iHihtIaNFtqJ5tzzlNx602XpWC06bsAN6Gm6brN2rVl1M6HqALYz3zwS5lqVhPdhOYNxRxdd7D+tYVzaXIqYvBf51ZOmaozLG2xrAbRMSg4kBtKB5mvWh24AUoe3+/f7PPijdu9RQOaYBY8q1HePmIgkMA3vdovbdTOv5qhEpgsHDM1bbJhAQJU574BD7APkCgHaRv5VY8qKAMZkxYNIi9EOAkxWwSfwaRCl3o8dJHnAljkaFdoOHDfn86n/uaJjlmYE6eXNu3d8LNABLxcLQsj+Bx2qNKAf2mgPL5B/P0mPIRwhKvxJQkK9h+MBnQxmGf8HfT9P3O2xtV4rvPdK0pgQvbPTalvD5SIqaJ9yNEjT51DDzGihnREZOCHicdQTX5qrf8yeo5aBDAC7M2MA+nvVioH9NKRw5+kceNIYmzL1Jo=
+    secure: JUGzESC8DCIV5CjmRNUV2p9uXxUctY2xsYZ61BmBG7Zx1Efq9KpDwnv7CM2f9JrM/g1v2ZvXXbiFPLMsXCQsiM+qQF25vnJ/Flxfbs9StKXfqmV8iWrKZ3E5zHas2k8rMwnauwbvLbJMxziYjoeQElIp7HQpsgbRbaBMUf99vx9uZ29DyrX3yxjHfnyLGQvgJNUaneRyK1KHHMI2aTtZPWqN3QSPbG6B7nicV0B2+OsgV8xae1Gz/y25uwBavKQDqp0zi23SeB7dn7wAl5m95pzAAeCsUu6GebiMFB9hy4mVSa6l9yKAUfYLpW5yI3QQM02j7mQx1tVQM4VgVZviS3LdvdJXCxWKCj+Q1sT+NnzSWE6fGKK7uV6yjA00oSCArT4J50SnPI+EACp0LvG/e4jU+R9M7UJkhFCE5ZlpNiBqW+E+LJQNNgZ59BB/QSiLXbZj0Dpbw8pGjpsVd0cyC7I3kamoYnZLud8tkUuwpbgPnvvHjSDXlhXLDj1TTOkV1uPRLjbHAq9qbK3K4NsIZdXRnhEa9qH96WvQ5OK3hKGWvZQTK7b/5hw91lHq+vXEylANe60ItxKpB64gbJdcqeq9EmhV9y2NJVqqrE5IGkpMnWc6KM5R3XW5MmNkU53irnofgVrjjDjxCfFxjqPGg5AbcU4ooaTfiIVjF5Z6iXk=
