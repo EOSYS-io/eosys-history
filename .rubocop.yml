@@ -1,2 +1,2 @@
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context', 'namespace']
+  ExcludedMethods: ['describe', 'context', 'namespace', 'it']

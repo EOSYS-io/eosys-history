@@ -13,7 +13,9 @@ module Api
             options = { projection: { _id: 0, createdAt: 0 } }
 
             status 200
-            Api::Helper::MongoHelpers.find_one('transaction_traces', filter, options)
+            Api::Helper::MongoHelpers.find_one(
+              'transaction_traces', filter, options
+            )
           end
         end
       end
