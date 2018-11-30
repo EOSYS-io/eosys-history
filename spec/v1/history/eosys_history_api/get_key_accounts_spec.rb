@@ -25,14 +25,14 @@ describe Api::V1::History::GetKeyAccounts do
     it 'returns 200 with accounts when there exists accounts' do
       accounts = [
         {
-            account: "testacc",
-            permission: "owner",
-            public_key: "EOS3gDQcTqucwqkozkMG8Akq5tZkSMmj3TDKp7u2gK2vN6N3g7RiF"
+          account: "testacc",
+          permission: "owner",
+          public_key: "EOS3gDQcTqucwqkozkMG8Akq5tZkSMmj3TDKp7u2gK2vN6N3g7RiF"
         },
         {
-            account: "testacc",
-            permission: "active",
-            public_key: "EOS3gDQcTqucwqkozkMG8Akq5tZkSMmj3TDKp7u2gK2vN6N3g7RiF"
+          account: "testacc",
+          permission: "active",
+          public_key: "EOS3gDQcTqucwqkozkMG8Akq5tZkSMmj3TDKp7u2gK2vN6N3g7RiF"
         }
      ]
       # Mocking mongodb response.
