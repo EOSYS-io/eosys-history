@@ -8,7 +8,10 @@ module Api
             requires :account_name,
                      type: String,
                      regexp: /\A[a-z1-5.]{1,12}\z/
-            optional :skip, type: Integer, default: 0
+            optional :skip,
+                     type: Integer,
+                     default: 0,
+                     values: ->(v) { v >= 0 }
             optional :limit, type: Integer, default: 10, values: 1..100
             optional :sort, type: Integer, default: -1, values: [1, -1]
           end
