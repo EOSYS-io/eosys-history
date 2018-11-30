@@ -21,11 +21,11 @@ bundle install --binstubs
 ## Run
 
 ```
-puma
+bin/puma
 ```
 
 ## Test
 ```
-rspec
+bin/rspec
 ```
 
