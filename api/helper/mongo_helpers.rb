@@ -9,8 +9,8 @@ module Api
         user: ENV['MONGODB_USER'],
         password: ENV['MONGODB_PASSWORD'],
         auth_source: 'admin',
-        :max_pool_size => 5,
-        :connect => :direct
+        max_pool_size: 5,
+        connect: :direct
       )
 
       def self.get_collection(collection_name)
@@ -22,7 +22,7 @@ module Api
       end
 
       def self.find_one(collection_name, filter, options)
-        @@client[collection_name].find(filter,options).first
+        @@client[collection_name].find(filter, options).first
       end
     end
   end

@@ -5,9 +5,9 @@ module Api
         format :json
         namespace 'get_key_accounts' do
           params do
-            requires :public_key, 
-              type: String, 
-              regexp: /\AEOS[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}\z/
+            requires :public_key,
+                     type: String,
+                     regexp: /\AEOS[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{50}\z/
           end
 
           post do

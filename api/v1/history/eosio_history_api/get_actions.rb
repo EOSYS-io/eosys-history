@@ -5,9 +5,9 @@ module Api
         format :json
         namespace 'get_actions' do
           params do
-            requires :account_name, 
-              type: String, 
-              regexp: /\A[a-z1-5.]{1,12}\z/
+            requires :account_name,
+                     type: String,
+                     regexp: /\A[a-z1-5.]{1,12}\z/
             optional :skip, type: Integer, default: 0
             optional :limit, type: Integer, default: 10, values: 1..100
             optional :sort, type: Integer, default: -1, values: [1, -1]
@@ -36,7 +36,9 @@ module Api
             # Since Grape returns status 201 for HTTP Post request by default,
             # change it to 200.
             status 200
-            { actions: Api::Helper::MongoHelpers.find('action_traces', filter, options) }
+            { actions: Api::Helper::MongoHelpers.find(
+              'action_traces', filter, options
+            ) }
           end
         end
       end

@@ -14,3 +14,5 @@ gem "rack-cors", "~> 1.0"
 gem "rspec", "~> 3.8", :group => [:test]
 
 gem "rack-test", "~> 1.1", :group => [:test]
+
+gem 'rubocop', require: false
