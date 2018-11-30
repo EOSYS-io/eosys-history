@@ -1,0 +1,25 @@
+branches:
+  only:
+  - master
+sudo: required
+
+git:
+  submodules: false
+
+jobs:
+  include:
+    - stage: Test
+      language: ruby
+      cache:
+        bundler: true
+        directories:
+          - /home/travis/.rvm/
+      env:
+        - RACK_ENV=test
+      script:
+        - bundle exec rspec
+
+notifications:
+  email: false
+  slack:
+    secure: NYIhR65QVav3UgtYE7S0hBtDpOj0V0/jZPdcab6OawphCIVAuGbDFN3whKIRDZD/Gtgcs9GBS5jKqg57GOu8uGwfv5QK3z1TrZTkJ285KMlfsreEFluDLeJBYogCwURUBsaMbZ7z4eb33qyMAH1/SCVw/R5ppxLpcSoOjlSRAwKZDyEeOHdXcRe9Jn0nOGTQEZYYT0wO3fDViu0D2mLd6ELjZONjqvkDx6w91/ZoXFg+Orpaq4IOdIHaseRS3iHihtIaNFtqJ5tzzlNx602XpWC06bsAN6Gm6brN2rVl1M6HqALYz3zwS5lqVhPdhOYNxRxdd7D+tYVzaXIqYvBf51ZOmaozLG2xrAbRMSg4kBtKB5mvWh24AUoe3+/f7PPijdu9RQOaYBY8q1HePmIgkMA3vdovbdTOv5qhEpgsHDM1bbJhAQJU574BD7APkCgHaRv5VY8qKAMZkxYNIi9EOAkxWwSfwaRCl3o8dJHnAljkaFdoOHDfn86n/uaJjlmYE6eXNu3d8LNABLxcLQsj+Bx2qNKAf2mgPL5B/P0mPIRwhKvxJQkK9h+MBnQxmGf8HfT9P3O2xtV4rvPdK0pgQvbPTalvD5SIqaJ9yNEjT51DDzGihnREZOCHicdQTX5qrf8yeo5aBDAC7M2MA+nvVioH9NKRw5+kceNIYmzL1Jo=
