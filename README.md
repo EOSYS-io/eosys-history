@@ -18,6 +18,23 @@ gem install bundler
 bundle install --binstubs
 ```
 
+## Recommended VSCode settings.
+```
+# Add to settings.json
+"editor.formatOnSave": true,
+"editor.formatOnSaveTimeout": 5000,
+"ruby.lint": {
+  "reek": true,
+  "rubocop": true,
+  "ruby": true, // Runs ruby -wc
+  "fasterer": true,
+  "debride": true,
+  "ruby-lint": true
+},
+"ruby.format": "rubocop",
+"ruby.rubocop.executePath": "./bin/rubocop",
+```
+
 ## Run
 
 ```
