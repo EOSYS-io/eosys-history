@@ -16,6 +16,36 @@ jobs:
     - RACK_ENV=test
     script:
     - bundle exec rspec
+  - stage: Build and push a docker image, deploy to ecs.
+    if: type != pull_request
+    language: python
+    python:
+      - "3.6"
+    cache: pip
+    services:
+      - docker
+    install:
+      # install AWS SDK
+      - pip install awscli
+      - export PATH=$PATH:$HOME/.local/bin
+      # install necessary dependency for ecs-deploy
+      - sudo apt-get update
+      - sudo apt-get install jq -y
+      # install ecs-deploy
+      - curl https://raw.githubusercontent.com/silinternational/ecs-deploy/master/ecs-deploy | sudo tee -a /usr/bin/ecs-deploy
+      - sudo chmod +x /usr/bin/ecs-deploy
+    before_script:
+      - export DOCKER_TAG=$TRAVIS_COMMIT
+      # Dockerhub login
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    script:
+      # Build a docker image and push
+      - export DOCKER_IMAGE=$DOCKER_HUB_REPO:$DOCKER_TAG
+      - docker build -t $DOCKER_IMAGE --build-arg MONGODB_USER=$MONGODB_USER --build-arg MONGODB_PASSWORD=$MONGODB_PASSWORD .
+      - docker push $DOCKER_IMAGE
+      # Deploy to ECS.
+      - ecs-deploy -c $AWS_CLUSTER_NAME -n $AWS_SERVICE_NAME -i $DOCKER_IMAGE -t 900
+
 notifications:
   email: false
   slack:
