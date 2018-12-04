@@ -41,7 +41,7 @@ jobs:
     script:
       # Build a docker image and push
       - export DOCKER_IMAGE=$DOCKER_HUB_REPO:$DOCKER_TAG
-      - docker build -t $DOCKER_IMAGE --build-arg MONGODB_USER=$MONGODB_USER --build-arg MONGODB_PASSWORD=$MONGODB_PASSWORD .
+      - docker build -t $DOCKER_IMAGE --build-arg MONGODB_USER=$MONGODB_USER --build-arg MONGODB_PASSWORD=$MONGODB_PASSWORD --build-arg MONGODB_HOST=$MONGODB_HOST .
       - docker push $DOCKER_IMAGE
       # Deploy to ECS.
       - ecs-deploy -c $AWS_CLUSTER_NAME -n $AWS_SERVICE_NAME -i $DOCKER_IMAGE -t 900

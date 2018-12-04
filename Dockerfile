@@ -5,9 +5,11 @@ ENV RACK_ENV production
 RUN apt-get update -qq && apt-get install -y build-essential
 RUN gem update bundler
 
+ARG MONGODB_HOST
 ARG MONGODB_USER
 ARG MONGODB_PASSWORD
 
+ENV MONGODB_HOST ${MONGODB_HOST}
 ENV MONGODB_USER ${MONGODB_USER}
 ENV MONGODB_PASSWORD ${MONGODB_PASSWORD}
 

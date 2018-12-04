@@ -4,7 +4,7 @@ module Api
       include Mongo
 
       @@client = Client.new(
-        ['mongodb.eosys.io:27017'],
+        ["#{ENV['MONGODB_HOST']}"],
         database: 'eos',
         user: ENV['MONGODB_USER'],
         password: ENV['MONGODB_PASSWORD'],
